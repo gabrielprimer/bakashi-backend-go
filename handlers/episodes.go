@@ -1,4 +1,3 @@
-// backend-bakashi-go/handlers/episodes.go
 package handlers
 
 import (

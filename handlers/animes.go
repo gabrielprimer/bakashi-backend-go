@@ -1,4 +1,3 @@
-// backend-bakashi-go/handlers/animes.go
 package handlers
 
 import (
@@ -8,7 +7,6 @@ import (
 	"net/http"
 	"backend-bakashi-go/types"  // Certifique-se de que o caminho está correto
 )
-
 
 func GetAnimes(w http.ResponseWriter, r *http.Request) {
 	// Carregar o arquivo JSON de animes

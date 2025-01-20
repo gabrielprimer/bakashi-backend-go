@@ -8,7 +8,11 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "/api/animes",
+      "dest": "/api/server.go"
+    },
+    {
+      "src": "/api/episodes",
       "dest": "/api/server.go"
     }
   ]
