@@ -8,11 +8,11 @@
   ],
   "routes": [
     {
-      "src": "/api/animes",
+      "src": "/handlers/animes",
       "dest": "/api/server.go"
     },
     {
-      "src": "/api/episodes",
+      "src": "/handlers/episodes",
       "dest": "/api/server.go"
     }
   ]
