@@ -1,19 +1,11 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/server.go",
-      "use": "@vercel/go"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/handlers/animes",
-      "dest": "/api/server.go"
+  "functions": {
+    "api/animes/index.go": {
+      "runtime": "go1.x"
     },
-    {
-      "src": "/handlers/episodes",
-      "dest": "/api/server.go"
+    "api/episodes/index.go": {
+      "runtime": "go1.x"
     }
-  ]
+  }
 }
