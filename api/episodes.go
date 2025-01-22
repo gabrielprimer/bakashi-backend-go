@@ -2,8 +2,8 @@ package api
 
 import (
 	"encoding/json"
-	"net/http"
 	"fmt"
+	"net/http"
 	"os"
 
 	"backend-bakashi-go/api/types"
@@ -11,15 +11,8 @@ import (
 
 // Handler para retornar os episódios
 func EpisodesHandler(w http.ResponseWriter, r *http.Request) {
-	// Obtém o diretório de trabalho atual
-	dir, err := os.Getwd()
-	if err != nil {
-		http.Error(w, fmt.Sprintf("Erro ao obter diretório de trabalho: %v", err), http.StatusInternalServerError)
-		return
-	}
-
-	// Abre o arquivo JSON de episódios
-	file, err := os.Open(fmt.Sprintf("%s/data/episodes.json", dir))
+	// Acesse o arquivo episodes.json a partir do diretório correto
+	file, err := os.Open("data/episodes.json")
 	if err != nil {
 		http.Error(w, fmt.Sprintf("Erro ao abrir episodes.json: %v", err), http.StatusInternalServerError)
 		return
@@ -34,7 +27,8 @@ func EpisodesHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Define o tipo de conteúdo como JSON e envia a resposta
+	// Define o tipo de conteúdo como JSON
 	w.Header().Set("Content-Type", "application/json")
+	// Envia a resposta como JSON
 	json.NewEncoder(w).Encode(episodes)
 }
