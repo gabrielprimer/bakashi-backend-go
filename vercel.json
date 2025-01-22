@@ -9,11 +9,11 @@
   "routes": [
     {
       "src": "/api/animes",
-      "dest": "/main.go"
+      "dest": "/handler"
     },
     {
       "src": "/api/episodes",
-      "dest": "/main.go"
+      "dest": "/handler"
     }
   ]
 }
