@@ -1,18 +1,18 @@
 package main
 
 import (
-	"log"
 	"net/http"
-
 	"backend-bakashi-go/api/handlers"
 )
 
-func main() {
-	// Define as rotas
-	http.HandleFunc("/api/animes", handlers.AnimesHandler)
-	http.HandleFunc("/api/episodes", handlers.EpisodesHandler)
-
-	// Inicia o servidor
-	log.Println("Servidor rodando na porta 8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+// Handler é a função exportada que a Vercel utiliza como ponto de entrada.
+func Handler(w http.ResponseWriter, r *http.Request) {
+	switch r.URL.Path {
+	case "/api/animes":
+		handlers.AnimesHandler(w, r)
+	case "/api/episodes":
+		handlers.EpisodesHandler(w, r)
+	default:
+		http.NotFound(w, r)
+	}
 }
