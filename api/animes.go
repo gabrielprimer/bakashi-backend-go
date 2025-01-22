@@ -11,8 +11,7 @@ import (
 
 // Handler para retornar os animes
 func AnimesHandler(w http.ResponseWriter, r *http.Request) {
-	// Acesse o arquivo animes.json a partir do diretório correto
-	file, err := os.Open("data/animes.json")
+	file, err := os.Open("./data/animes.json") // Ajustado para funcionar corretamente
 	if err != nil {
 		http.Error(w, fmt.Sprintf("Erro ao abrir animes.json: %v", err), http.StatusInternalServerError)
 		return
@@ -27,8 +26,6 @@ func AnimesHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Define o tipo de conteúdo como JSON
 	w.Header().Set("Content-Type", "application/json")
-	// Envia a resposta como JSON
 	json.NewEncoder(w).Encode(animes)
 }

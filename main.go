@@ -1,27 +1,20 @@
 package handler
 
 import (
-	"fmt"
-	"log"
+	
 	"net/http"
-	"os"
 
-	"backend-bakashi-go/api" // Importa o pacote api com os manipuladores
+	"backend-bakashi-go/api" // Importa os manipuladores de API
 )
 
-// Função que Vercel espera exportada para rodar o servidor
+// Exportando um handler para o Vercel
 func Handler(w http.ResponseWriter, r *http.Request) {
-	// Definindo os handlers para os endpoints
-	http.HandleFunc("/api/animes", api.AnimesHandler)
-	http.HandleFunc("/api/episodes", api.EpisodesHandler)
-
-	// Verifica a porta para o Vercel, caso contrário, usa a padrão 8080
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8080" // Porta padrão para o Vercel
+	switch r.URL.Path {
+	case "/api/animes":
+		api.AnimesHandler(w, r)
+	case "/api/episodes":
+		api.EpisodesHandler(w, r)
+	default:
+		http.NotFound(w, r)
 	}
-
-	// Mensagem de log para iniciar o servidor
-	fmt.Printf("Servidor rodando em http://localhost:%s\n", port)
-	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
