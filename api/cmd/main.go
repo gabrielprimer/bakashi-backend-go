@@ -1,8 +1,8 @@
-package main
+package handler
 
 import (
 	"net/http"
-	"backend-bakashi-go/api/handlers"
+	"backend-bakashi-go/api"
 )
 
 // Handler é a função exportada que a Vercel utiliza como ponto de entrada.
