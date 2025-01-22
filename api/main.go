@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	"backend-bakashi-go/types"
+	"backend-bakashi-go/api/types"
 )
 
 // Estrutura para representar a lista de animes
